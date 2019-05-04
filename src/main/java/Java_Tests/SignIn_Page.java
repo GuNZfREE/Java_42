@@ -1,5 +1,6 @@
 package Java_Tests;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SignIn_Page extends Starter_Page{
-
+    @Step
     public void enter_Login(String login) {
         WebElement signin_form;
         WebElement login_form;
@@ -18,7 +19,7 @@ public class SignIn_Page extends Starter_Page{
         login_form.click();
         login_form.sendKeys(login + Keys.ENTER);
     }
-
+    @Step
     public void enter_Password(String password) {
         WebElement signin_form;
         WebElement pass_form;

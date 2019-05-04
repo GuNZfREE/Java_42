@@ -1,5 +1,6 @@
 package Java_Tests;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -21,12 +22,12 @@ public class Starter_Page extends Test_Prepare {
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector("[class*='line__region'] [class*='link__inner']"))));
     }
-
+    @Step
     public SignIn_Page start_SignIn() {
         Profile_Info().click();
         return new SignIn_Page();
     }
-
+    @Step
     public Profile_Page start_Profile() {
         WebElement profile_Address;
 
@@ -37,17 +38,17 @@ public class Starter_Page extends Test_Prepare {
     }
 
 
-
+    @Step
     public void check_Profile() {
         Assert.assertEquals(Profile_Info().getAttribute("textContent"), "Мой профиль");
     }
-
+    @Step
     public void check_login(String login) {
         (new Actions(driver)).moveToElement(Profile_Info()).build().perform();
         Assert.assertEquals(driver.findElement(By.cssSelector(".header2-user-menu__email"))
                 .getAttribute("textContent"), login);
     }
-
+    @Step
     public void change_City(String name_City) {
         WebElement form_City;
         WebElement enter_City;
@@ -76,7 +77,7 @@ public class Starter_Page extends Test_Prepare {
         enter_City.sendKeys(Keys.ENTER);
         driver.navigate().refresh();
     }
-
+    @Step
     public void check_City(String name_City) {
         this.name_City = name_City;
         Assert.assertEquals(City_Info().getAttribute("textContent"), name_City);
