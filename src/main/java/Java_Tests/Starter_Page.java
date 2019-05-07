@@ -25,6 +25,7 @@ public class Starter_Page extends Test_Prepare {
     @Step
     public SignIn_Page start_SignIn() {
         Profile_Info().click();
+
         return new SignIn_Page();
     }
     @Step

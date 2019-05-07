@@ -1,7 +1,9 @@
 package Java_Tests;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(Test_Listener.class)
 public class Test_1 extends Test_Prepare {
 
     @Test

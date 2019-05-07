@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class Test_Prepare {
     public static WebDriver driver;
 
-    @BeforeClass
+    @BeforeMethod
     public void prepare() {
         System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
@@ -22,7 +22,7 @@ public class Test_Prepare {
         driver.get("https://beru.ru");
     }
 
-    @AfterTest
+    @AfterMethod
     public void quit() {
         driver.get("https://beru.ru/logout?retpath=https%3A%2F%2Fberu.ru%2F");
         driver.quit();

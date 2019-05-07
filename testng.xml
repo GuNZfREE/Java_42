@@ -5,12 +5,11 @@
            <class name="Java_Tests.Test_1" />
         </classes>
     </test>
-    <!--<test name="Test_2">-->
-        <!--<parameter name="name_City" value="Хвалынск"/>-->
-            <!--<classes>-->
-                <!--<class name="Java_Tests.Test_2" />-->
-            <!--</classes>-->
-    <!--</test>-->
+    <test name="Test_2">
+            <classes>
+                <class name="Java_Tests.Test_2" />
+            </classes>
+    </test>
     <!--<test name="Test_3">-->
         <!--<classes>-->
             <!--<class name="Java_Tests.Test_3" />-->

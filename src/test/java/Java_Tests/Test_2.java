@@ -1,12 +1,23 @@
 package Java_Tests;
 
-import org.testng.annotations.Parameters;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(Test_Listener.class)
 public class Test_2 extends Test_Prepare {
 
-    @Parameters("name_City")
-    @Test
+    @DataProvider(name="SearchProvider")
+    public Object[][] getDataFromDataProvider(){
+        return new Object[][]
+                {
+                        { "Хвалынск" },
+                        { "Магадан" },
+                        { "Владимир" }
+                };
+    }
+
+    @Test(dataProvider="SearchProvider")
     public void test_2(String name_City) {
         String login = "GuNZfREE164";
         String password = "2178boston";
