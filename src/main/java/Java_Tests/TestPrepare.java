@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 import java.util.concurrent.TimeUnit;
 
-public class Test_Prepare {
+public class TestPrepare {
     public static WebDriver driver;
 
     @BeforeMethod
@@ -26,6 +26,7 @@ public class Test_Prepare {
     @AfterMethod
     public void quit() {
         driver.get("https://beru.ru/logout?retpath=https%3A%2F%2Fberu.ru%2F");
+        driver.close();
         driver.quit();
     }
 }

@@ -8,12 +8,10 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
-public class Test_Listener extends Test_Prepare implements ITestListener {
+public class TestListener extends TestPrepare implements ITestListener {
 
     @Attachment(value = "{0}", type = "image/png")
     private byte[] screenCreate(String name) {

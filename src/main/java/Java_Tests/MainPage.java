@@ -9,15 +9,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class Starter_Page extends Test_Prepare {
+public class MainPage extends TestPrepare {
 
-    private WebElement Profile_Info() {
+    private WebElement ProfileInfo() {
         return (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector(".header2-nav__user"))));
     }
 
-    private WebElement City_Info() {
+    private WebElement CityInfo() {
         return (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector("[class*='line__region'] "
@@ -25,50 +25,50 @@ public class Starter_Page extends Test_Prepare {
     }
 
     @Step("Open Sign In Form")
-    public SignIn_Page start_SignIn() {
-        Profile_Info().click();
-        return new SignIn_Page();
+    public SignInPage startSignIn() {
+        ProfileInfo().click();
+        return new SignInPage();
     }
 
     @Step("Open Profile")
-    public Profile_Page start_Profile() {
+    public ProfilePage startProfile() {
         WebElement profileAddress;
 
-        (new Actions(driver)).moveToElement(Profile_Info()).build().perform();
+        (new Actions(driver)).moveToElement(ProfileInfo()).build().perform();
         profileAddress = driver.findElement(By.
                 cssSelector("[class*='type_settings']"));
         profileAddress.click();
-        return new Profile_Page();
+        return new ProfilePage();
     }
 
     @Step("Check Profile Authorization")
-    public void check_Profile() {
-        Assert.assertEquals(Profile_Info()
+    public void checkProfile() {
+        Assert.assertEquals(ProfileInfo()
                 .getAttribute("textContent"), "Мой профиль");
     }
 
     @Step("Check Profile Login")
-    public void check_Login(String login) {
-        (new Actions(driver)).moveToElement(Profile_Info()).build().perform();
+    public void checkLogin(String login) {
+        (new Actions(driver)).moveToElement(ProfileInfo()).build().perform();
         Assert.assertEquals(driver.findElement(By
                 .cssSelector(".header2-user-menu__email"))
                 .getAttribute("textContent"), login);
     }
 
     @Step("Check City on Main Page")
-    public void check_City(String nameCity) {
-        Assert.assertEquals(City_Info()
+    public void checkCity(String nameCity) {
+        Assert.assertEquals(CityInfo()
                         .getAttribute("textContent"), nameCity);
     }
 
     @Step("Change City on Main Page")
-    public void change_City(String nameCity) {
+    public void changeCity(String nameCity) {
         WebElement formCity;
         WebElement enterCity;
         WebElement searchCity;
         WebElement chooseCity;
 
-        City_Info().click();
+        CityInfo().click();
 
         formCity = (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By

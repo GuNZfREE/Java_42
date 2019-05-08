@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SignIn_Page extends Starter_Page{
+public class SignInPage extends MainPage {
     @Step("Enter Login")
-    public void enter_Login(String login) {
+    public void enterLogin(String login) {
         WebElement signInForm;
         WebElement logInForm;
 
@@ -23,7 +23,7 @@ public class SignIn_Page extends Starter_Page{
     }
 
     @Step("Enter Password")
-    public void enter_Password(String password) {
+    public void enterPassword(String password) {
         WebElement signInForm;
         WebElement passInForm;
 

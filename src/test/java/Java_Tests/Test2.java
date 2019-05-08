@@ -4,8 +4,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(Test_Listener.class)
-public class Test_2 extends Test_Prepare {
+@Listeners(TestListener.class)
+public class Test2 extends TestPrepare {
 
     @DataProvider(name="ListCity")
     public Object[][] getDataFromDataProvider(){
@@ -18,19 +18,19 @@ public class Test_2 extends Test_Prepare {
     }
 
     @Test(dataProvider="ListCity")
-    public void test_2(String nameCity) {
+    public void test2(String nameCity) {
         String login = "GuNZfREE164";
         String password = "2178boston";
 
-        Starter_Page mainPage = new Starter_Page();
-        mainPage.change_City(nameCity);
-        mainPage.check_City(nameCity);
+        MainPage mainPage = new MainPage();
+        mainPage.changeCity(nameCity);
+        mainPage.checkCity(nameCity);
 
-        SignIn_Page signIn = mainPage.start_SignIn();
-        signIn.enter_Login(login);
-        signIn.enter_Password(password);
+        SignInPage signIn = mainPage.startSignIn();
+        signIn.enterLogin(login);
+        signIn.enterPassword(password);
 
-        Profile_Page profile = mainPage.start_Profile();
-        profile.check_Address();
+        ProfilePage profile = mainPage.startProfile();
+        profile.checkAddress();
     }
 }

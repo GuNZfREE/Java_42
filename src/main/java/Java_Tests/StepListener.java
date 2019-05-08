@@ -10,13 +10,11 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Calendar;
 
 @SuppressWarnings("JavadocType")
-public class Step_Listener extends Test_Prepare implements StepLifecycleListener {
+public class StepListener extends TestPrepare implements StepLifecycleListener {
 
     private String createScreen() {
         File screenshot = ((TakesScreenshot)(new Augmenter().augment(driver)))
