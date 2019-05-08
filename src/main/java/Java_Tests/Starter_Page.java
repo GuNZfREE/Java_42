@@ -10,77 +10,85 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class Starter_Page extends Test_Prepare {
-    public String name_City;
 
     private WebElement Profile_Info() {
         return (new WebDriverWait(driver, 30)
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".header2-nav__user"))));
+                .until(ExpectedConditions.presenceOfElementLocated(By
+                        .cssSelector(".header2-nav__user"))));
     }
 
     private WebElement City_Info() {
         return (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
-                        .cssSelector("[class*='line__region'] [class*='link__inner']"))));
+                        .cssSelector("[class*='line__region'] "
+                                     + " [class*='link__inner']"))));
     }
-    @Step
+
+    @Step("Open Sign In Form")
     public SignIn_Page start_SignIn() {
         Profile_Info().click();
-
         return new SignIn_Page();
     }
-    @Step
+
+    @Step("Open Profile")
     public Profile_Page start_Profile() {
-        WebElement profile_Address;
+        WebElement profileAddress;
 
         (new Actions(driver)).moveToElement(Profile_Info()).build().perform();
-        profile_Address = driver.findElement(By.cssSelector("[class*='type_addresses']"));
-        profile_Address.click();
+        profileAddress = driver.findElement(By.
+                cssSelector("[class*='type_settings']"));
+        profileAddress.click();
         return new Profile_Page();
     }
 
-
-    @Step
+    @Step("Check Profile Authorization")
     public void check_Profile() {
-        Assert.assertEquals(Profile_Info().getAttribute("textContent"), "Мой профиль");
+        Assert.assertEquals(Profile_Info()
+                .getAttribute("textContent"), "Мой профиль");
     }
-    @Step
-    public void check_login(String login) {
+
+    @Step("Check Profile Login")
+    public void check_Login(String login) {
         (new Actions(driver)).moveToElement(Profile_Info()).build().perform();
-        Assert.assertEquals(driver.findElement(By.cssSelector(".header2-user-menu__email"))
+        Assert.assertEquals(driver.findElement(By
+                .cssSelector(".header2-user-menu__email"))
                 .getAttribute("textContent"), login);
     }
-    @Step
-    public void change_City(String name_City) {
-        WebElement form_City;
-        WebElement enter_City;
-        WebElement search_City;
-        WebElement choose_City;
+
+    @Step("Check City on Main Page")
+    public void check_City(String nameCity) {
+        Assert.assertEquals(City_Info()
+                        .getAttribute("textContent"), nameCity);
+    }
+
+    @Step("Change City on Main Page")
+    public void change_City(String nameCity) {
+        WebElement formCity;
+        WebElement enterCity;
+        WebElement searchCity;
+        WebElement chooseCity;
 
         City_Info().click();
-        this.name_City = name_City;
 
-        form_City = (new WebDriverWait(driver, 30)
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".header2-region-popup"))));
+        formCity = (new WebDriverWait(driver, 30)
+                .until(ExpectedConditions.presenceOfElementLocated(By
+                        .cssSelector(".header2-region-popup"))));
 
-        enter_City = form_City.findElement(By.cssSelector(".input__control"));
-        enter_City.sendKeys(name_City);
+        enterCity = formCity.findElement(By.cssSelector(".input__control"));
+        enterCity.sendKeys(nameCity);
 
-        search_City = (new WebDriverWait(driver, 30)
+        searchCity = (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector("[class*='region-suggest__list suggest2']"))));
 
-        choose_City = search_City.findElement(By.xpath("//*[contains(text(),'" + name_City + "')]"));
-        choose_City.click();
+        chooseCity = searchCity.findElement(By
+                .xpath("//*[contains(text(),'" + nameCity + "')]"));
+        chooseCity.click();
 
         (new WebDriverWait(driver, 30))
-                .until(ExpectedConditions.invisibilityOf(search_City));
+                .until(ExpectedConditions.invisibilityOf(searchCity));
 
-        enter_City.sendKeys(Keys.ENTER);
+        enterCity.sendKeys(Keys.ENTER);
         driver.navigate().refresh();
-    }
-    @Step
-    public void check_City(String name_City) {
-        this.name_City = name_City;
-        Assert.assertEquals(City_Info().getAttribute("textContent"), name_City);
     }
 }

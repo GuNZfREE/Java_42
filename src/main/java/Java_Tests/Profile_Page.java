@@ -8,21 +8,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class Profile_Page extends Starter_Page {
-    @Step
     private WebElement Profile_City() {
         return (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector("[class*='settings-list__title'] [class*='link__inner']"))));
     }
-    @Step
+
     private WebElement Page_City() {
         return (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector("[class*='line__region'] [class*='link__inner']"))));
     }
-    @Step
+
+    @Step("Check Address in Profile and Page")
     public void check_Address() {
-        Assert.assertEquals(Profile_City().getAttribute("textContent"),
-                Page_City().getAttribute("textContent"));
+        Assert.assertEquals(Page_City().getAttribute("textContent"),
+                Profile_City().getAttribute("textContent"));
     }
 }

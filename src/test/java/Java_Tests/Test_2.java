@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 @Listeners(Test_Listener.class)
 public class Test_2 extends Test_Prepare {
 
-    @DataProvider(name="SearchProvider")
+    @DataProvider(name="ListCity")
     public Object[][] getDataFromDataProvider(){
         return new Object[][]
                 {
@@ -17,20 +17,20 @@ public class Test_2 extends Test_Prepare {
                 };
     }
 
-    @Test(dataProvider="SearchProvider")
-    public void test_2(String name_City) {
+    @Test(dataProvider="ListCity")
+    public void test_2(String nameCity) {
         String login = "GuNZfREE164";
         String password = "2178boston";
 
-        Starter_Page main_page = new Starter_Page();
-        main_page.change_City(name_City);
-        main_page.check_City(name_City);
+        Starter_Page mainPage = new Starter_Page();
+        mainPage.change_City(nameCity);
+        mainPage.check_City(nameCity);
 
-        SignIn_Page signIn = main_page.start_SignIn();
+        SignIn_Page signIn = mainPage.start_SignIn();
         signIn.enter_Login(login);
         signIn.enter_Password(password);
 
-        Profile_Page profile = main_page.start_Profile();
+        Profile_Page profile = mainPage.start_Profile();
         profile.check_Address();
     }
 }

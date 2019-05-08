@@ -8,25 +8,30 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SignIn_Page extends Starter_Page{
-    @Step
+    @Step("Enter Login")
     public void enter_Login(String login) {
-        WebElement signin_form;
-        WebElement login_form;
+        WebElement signInForm;
+        WebElement logInForm;
 
-        signin_form = (new WebDriverWait(driver, 40)
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".passp-login-form"))));
-        login_form = signin_form.findElement(By.cssSelector("#passp-field-login"));
-        login_form.click();
-        login_form.sendKeys(login + Keys.ENTER);
+        signInForm = (new WebDriverWait(driver, 40)
+                .until(ExpectedConditions
+                        .presenceOfElementLocated(By
+                                .cssSelector(".passp-login-form"))));
+        logInForm = signInForm.findElement(By.cssSelector("#passp-field-login"));
+        logInForm.click();
+        logInForm.sendKeys(login + Keys.ENTER);
     }
-    @Step
-    public void enter_Password(String password) {
-        WebElement signin_form;
-        WebElement pass_form;
 
-        signin_form = (new WebDriverWait(driver, 30)
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".passp-password-form"))));
-        pass_form = signin_form.findElement(By.cssSelector("#passp-field-passwd"));
-        pass_form.sendKeys(password + Keys.ENTER);
+    @Step("Enter Password")
+    public void enter_Password(String password) {
+        WebElement signInForm;
+        WebElement passInForm;
+
+        signInForm = (new WebDriverWait(driver, 30)
+                .until(ExpectedConditions
+                        .presenceOfElementLocated(By
+                                .cssSelector(".passp-password-form"))));
+        passInForm = signInForm.findElement(By.cssSelector("#passp-field-passwd"));
+        passInForm.sendKeys(password + Keys.ENTER);
     }
 }

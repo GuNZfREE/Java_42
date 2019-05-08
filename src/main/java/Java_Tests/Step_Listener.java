@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Calendar;
 
 @SuppressWarnings("JavadocType")
 public class Step_Listener extends Test_Prepare implements StepLifecycleListener {
@@ -21,11 +22,11 @@ public class Step_Listener extends Test_Prepare implements StepLifecycleListener
         File screenshot = ((TakesScreenshot)(new Augmenter().augment(driver)))
                 .getScreenshotAs(OutputType.FILE);
 
-        Date dat = new Date();
-        DateFormat formatForDateNow = new SimpleDateFormat("dd-mm-yyyy hh.mm.ss");
+        SimpleDateFormat timeScreen = new SimpleDateFormat("HH.mm.ss");
+        String date = timeScreen.format(new Date());
         String path = new File("screen").getAbsolutePath();
 
-        path += "\\" + formatForDateNow.format(dat) + ".png";
+        path += "\\screenshot " + date + ".png";
 
         try {
             BufferedImage img = ImageIO.read(screenshot);
@@ -54,6 +55,5 @@ public class Step_Listener extends Test_Prepare implements StepLifecycleListener
     public void beforeStepStop(final StepResult result) {
         attach(result);
     }
-
 }
 

@@ -12,7 +12,8 @@ public class Test_Prepare {
 
     @BeforeMethod
     public void prepare() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver",
+                           "C:\\Program Files (x86)\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-fullscreen", "disable-infobars");
 
