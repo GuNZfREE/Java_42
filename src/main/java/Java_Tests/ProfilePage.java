@@ -8,13 +8,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class ProfilePage extends MainPage {
-    private WebElement ProfileCity() {
+    private WebElement profileCity() {
         return (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector("[class*='settings-list__title'] [class*='link__inner']"))));
     }
 
-    private WebElement PageCity() {
+    private WebElement pageCity() {
         return (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector("[class*='line__region'] [class*='link__inner']"))));
@@ -22,7 +22,7 @@ public class ProfilePage extends MainPage {
 
     @Step("Check Address in Profile and Page")
     public void checkHeaderCityAndAddress() {
-        Assert.assertEquals(PageCity().getAttribute("textContent"),
-                ProfileCity().getAttribute("textContent"));
+        Assert.assertEquals(pageCity().getAttribute("textContent"),
+                profileCity().getAttribute("textContent"));
     }
 }
