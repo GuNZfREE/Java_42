@@ -4,7 +4,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @Listeners(TestListener.class)
-public class Test1 extends TestPrepare {
+public class TestLogin extends TestPrepare {
 
     @Test
     public void test1() {
@@ -17,6 +17,5 @@ public class Test1 extends TestPrepare {
         signIn.enterPassword(password);
         mainPage.checkProfile();
         mainPage.checkLogin(login + "@yandex.ru");
-        mainPage.quitLogin();
     }
 }

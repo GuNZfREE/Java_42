@@ -17,11 +17,8 @@ public class SearchPage extends MainPage {
 
     @Step("Set Min and Max Price")
     public void addPrices(String  min, String max) {
-        WebElement minPrice;
-        WebElement maxPrice;
-
-        minPrice = driver.findElement(By.id("glpricefrom"));
-        maxPrice = driver.findElement(By.id("glpriceto"));
+        WebElement minPrice = driver.findElement(By.id("glpricefrom"));
+        WebElement maxPrice = driver.findElement(By.id("glpriceto"));
 
         minPrice.sendKeys(min);
         WebElement wind = driver.findElement(By.cssSelector("[class*='_1PQIIOelRL']"));
@@ -33,9 +30,7 @@ public class SearchPage extends MainPage {
 
     @Step("Open All List Toothbrushes")
     public void addAllToothbrushes() throws InterruptedException {
-        WebElement showNewElement;
-
-        showNewElement = driver.findElement(By.cssSelector(".n-pager-more__button"));
+        WebElement showNewElement = driver.findElement(By.cssSelector(".n-pager-more__button"));
         while(true) {
             try {
                 showNewElement.click();
@@ -64,12 +59,16 @@ public class SearchPage extends MainPage {
         }
     }
 
+    public void goToOrder(){
+        allToothbrushes.get(allToothbrushes.size() - 2).findElement(By.cssSelector("[class*='_2w0qPDYwej']")).click();
+    }
+
     @Step("Add to Order")
     public void addToOrder() {
-        allToothbrushes.get(allToothbrushes.size() - 2).findElement(By.cssSelector("[class*='_2w0qPDYwej']")).click();
-        (new WebDriverWait(driver, 40))
+        goToOrder();
+        (new WebDriverWait(driver, 20))
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector("[class*='_1sjxYfIabK _26mXJDBxtH']")));
-        allToothbrushes.get(allToothbrushes.size() - 2).findElement(By.cssSelector("[class*='_2w0qPDYwej']")).click();
+        goToOrder();
     }
 }

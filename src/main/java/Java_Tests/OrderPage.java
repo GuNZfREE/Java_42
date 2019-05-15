@@ -65,7 +65,7 @@ public class OrderPage extends  MainPage {
         }
     }
 
-    @Step("Check Free Delivery Title")
+
     public void checkFreeDeliveryTitle(String title) {
         (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.attributeContains(
@@ -73,6 +73,7 @@ public class OrderPage extends  MainPage {
         checkDeliveryText(title);
     }
 
+    @Step("Check Free Delivery Title After Added Product")
     public void checkDeliveryText(String textDelivery) {
         WebElement freeCome = driver.findElement(By.cssSelector("[class *= '_3EX9adn_xp']"));
         Assert.assertTrue(freeCome.getAttribute("textContent").contains(textDelivery));

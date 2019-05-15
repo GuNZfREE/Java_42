@@ -2,17 +2,17 @@
 <suite name="Java Test">
     <test name="Test 1: Login">
         <classes>
-           <class name="Java_Tests.Test1" />
+           <class name="Java_Tests.TestLogin" />
         </classes>
     </test>
     <test name="Test 2: Change City">
             <classes>
-                <class name="Java_Tests.Test2" />
+                <class name="Java_Tests.TestChangeCity" />
             </classes>
     </test>
     <test name="Test_3: Buying Toothbrushes">
         <classes>
-            <class name="Java_Tests.Test3" />
+            <class name="Java_Tests.TestBuyToothbrush" />
         </classes>
     </test>
 </suite>

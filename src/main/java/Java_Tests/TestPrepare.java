@@ -1,9 +1,12 @@
 package Java_Tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.*;
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +28,13 @@ public class TestPrepare {
 
     @AfterMethod
     public void quit() {
+        if (driver.findElement(By.cssSelector(".header2-nav__user"))
+                .getAttribute("textContent").contains("Мой профиль")) {
+            WebElement profile = driver.findElement(By.cssSelector(".header2-nav__user"));
+            profile.click();
+            WebElement logOut = driver.findElement(By.cssSelector("[class*='item_type_logout']"));
+            logOut.click();
+        }
         driver.close();
         driver.quit();
     }

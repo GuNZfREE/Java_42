@@ -32,10 +32,8 @@ public class MainPage extends TestPrepare {
 
     @Step("Open Profile")
     public ProfilePage startProfile() {
-        WebElement profileAddress;
-
         (new Actions(driver)).moveToElement(profileInfo()).build().perform();
-        profileAddress = driver.findElement(By.
+        WebElement profileAddress = driver.findElement(By.
                 cssSelector("[class*='type_settings']"));
         profileAddress.click();
         return new ProfilePage();
@@ -63,25 +61,20 @@ public class MainPage extends TestPrepare {
 
     @Step("Change City on Main Page")
     public void changeCity(String nameCity) {
-        WebElement formCity;
-        WebElement enterCity;
-        WebElement searchCity;
-        WebElement chooseCity;
-
         cityInfo().click();
 
-        formCity = (new WebDriverWait(driver, 30)
+        WebElement formCity = (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector(".header2-region-popup"))));
 
-        enterCity = formCity.findElement(By.cssSelector(".input__control"));
+        WebElement enterCity = formCity.findElement(By.cssSelector(".input__control"));
         enterCity.sendKeys(nameCity);
 
-        searchCity = (new WebDriverWait(driver, 30)
+        WebElement searchCity = (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector("[class*='region-suggest__list suggest2']"))));
 
-        chooseCity = searchCity.findElement(By
+        WebElement chooseCity = searchCity.findElement(By
                 .xpath("//*[contains(text(),'" + nameCity + "')]"));
         chooseCity.click();
 
@@ -92,23 +85,9 @@ public class MainPage extends TestPrepare {
         driver.navigate().refresh();
     }
 
-    @Step("Log Out")
-    public void quitLogin() {
-        WebElement logOut;
-
-        (new Actions(driver)).moveToElement(profileInfo()).build().perform();
-        logOut = driver.findElement(By.cssSelector("[class*='item_type_logout']"));
-        logOut.click();
-
-        Assert.assertEquals(profileInfo()
-                .getAttribute("textContent"), "Войти в аккаунт");
-    }
-
     @Step("Searching Toothbrushes")
     public void searchToothbrushes() {
-        WebElement rowSearch;
-
-        rowSearch = driver.findElement(By.id("header-search"));
+        WebElement rowSearch = driver.findElement(By.id("header-search"));
         rowSearch.click();
         rowSearch.sendKeys("Электрические зубные щетки");
         rowSearch.sendKeys(Keys.ENTER);

@@ -4,7 +4,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @Listeners(TestListener.class)
-public class Test3 extends TestPrepare {
+public class TestBuyToothbrush extends TestPrepare {
 
     @Test
     public void test3() throws InterruptedException {

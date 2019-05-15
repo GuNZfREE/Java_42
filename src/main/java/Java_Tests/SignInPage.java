@@ -10,28 +10,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class SignInPage extends MainPage {
     @Step("Enter Login")
     public void enterLogin(String login) {
-        WebElement signInForm;
-        WebElement logInForm;
-
-        signInForm = (new WebDriverWait(driver, 40)
+        WebElement signInForm = (new WebDriverWait(driver, 40)
                 .until(ExpectedConditions
                         .presenceOfElementLocated(By
                                 .cssSelector(".passp-login-form"))));
-        logInForm = signInForm.findElement(By.cssSelector("#passp-field-login"));
+        WebElement logInForm = signInForm.findElement(By.cssSelector("#passp-field-login"));
         logInForm.click();
         logInForm.sendKeys(login + Keys.ENTER);
     }
 
     @Step("Enter Password")
     public void enterPassword(String password) {
-        WebElement signInForm;
-        WebElement passInForm;
-
-        signInForm = (new WebDriverWait(driver, 30)
+        WebElement signInForm = (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions
                         .presenceOfElementLocated(By
                                 .cssSelector(".passp-password-form"))));
-        passInForm = signInForm.findElement(By.cssSelector("#passp-field-passwd"));
+        WebElement passInForm = signInForm.findElement(By.cssSelector("#passp-field-passwd"));
         passInForm.sendKeys(password + Keys.ENTER);
     }
 }

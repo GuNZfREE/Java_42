@@ -26,40 +26,33 @@ public class TestListener extends TestPrepare implements ITestListener {
     }
 
     @Override
-    public void onTestStart(ITestResult result) {
-
-    }
-
-    @Override
-    public void onTestSuccess(ITestResult result) {
-
-    }
-
-    @Override
     public void onTestFailure(ITestResult result) {
-
         screen("Fail");
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-
         screen("Skip");
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-
         screen("Almost Fail");
     }
 
     @Override
-    public void onStart(ITestContext context) {
+    public void onTestStart(ITestResult result) {
+    }
 
+    @Override
+    public void onTestSuccess(ITestResult result) {
+    }
+
+    @Override
+    public void onStart(ITestContext context) {
     }
 
     @Override
     public void onFinish(ITestContext context) {
-
     }
 }
