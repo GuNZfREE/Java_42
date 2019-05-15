@@ -33,7 +33,6 @@ public class StepListener extends TestPrepare implements StepLifecycleListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return path;
     }
 

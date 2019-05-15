@@ -65,7 +65,6 @@ public class OrderPage extends  MainPage {
         }
     }
 
-
     public void checkFreeDeliveryTitle(String title) {
         (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.attributeContains(

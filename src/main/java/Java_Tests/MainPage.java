@@ -89,8 +89,7 @@ public class MainPage extends TestPrepare {
     public void searchToothbrushes() {
         WebElement rowSearch = driver.findElement(By.id("header-search"));
         rowSearch.click();
-        rowSearch.sendKeys("Электрические зубные щетки");
-        rowSearch.sendKeys(Keys.ENTER);
+        rowSearch.sendKeys("Электрические зубные щетки" + Keys.ENTER);
     }
 
 
