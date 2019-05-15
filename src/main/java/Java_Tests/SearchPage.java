@@ -19,8 +19,7 @@ public class SearchPage extends MainPage {
     public void addPrices(String  min, String max) {
         WebElement minPrice;
         WebElement maxPrice;
-        
-        
+
         minPrice = driver.findElement(By.id("glpricefrom"));
         maxPrice = driver.findElement(By.id("glpriceto"));
 

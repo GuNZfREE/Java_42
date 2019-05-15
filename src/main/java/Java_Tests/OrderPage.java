@@ -23,17 +23,14 @@ public class OrderPage extends  MainPage {
     @Step("Check Price in Order Page")
     public void checkPrice() {
         priceList = driver.findElements(By.cssSelector("[class *= '_1Q9ASvPbPN']"));
-
         int regularPrice = parseInt(priceList.get(0).findElement(By.cssSelector("[data-auto*='value']"))
                                          .getAttribute("textContent"));
-
 
         String tempText = priceList.get(1).findElement(By.cssSelector("[data-auto*='value']"))
                 .getAttribute("textContent");
         int deliveryPrice =  tempText.contains("бесплатно") ? 0 : parseInt(tempText);
 
         int sale = 0;
-
         if (priceList.size() == 4) {
             tempText = priceList.get(2).findElement(
                     By.xpath("//span[text()[contains(., 'Скидка')]]/following-sibling::span"))
@@ -41,11 +38,9 @@ public class OrderPage extends  MainPage {
             sale = parseInt(tempText);
         }
         int index = sale == 0 ? 2 : 3;
-
         int summaryPrice = parseInt(priceList.get(index).findElement(
                 By.cssSelector("[class*='_1oBlNqVHPq']"))
                 .getAttribute("textContent"));
-
         Assert.assertEquals(regularPrice + deliveryPrice - sale, summaryPrice);
 
     }
