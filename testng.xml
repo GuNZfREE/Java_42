@@ -1,18 +1,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Java Test">
-    <test name="Test 1">
+    <test name="Test 1: Login">
         <classes>
            <class name="Java_Tests.Test1" />
         </classes>
     </test>
-    <test name="Test 2">
+    <test name="Test 2: Change City">
             <classes>
                 <class name="Java_Tests.Test2" />
             </classes>
     </test>
-    <!--<test name="Test_3">-->
-        <!--<classes>-->
-            <!--<class name="Java_Tests.Test_3" />-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="Test_3: Buying Toothbrushes">
+        <classes>
+            <class name="Java_Tests.Test3" />
+        </classes>
+    </test>
 </suite>

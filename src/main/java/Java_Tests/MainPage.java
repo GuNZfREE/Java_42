@@ -11,13 +11,13 @@ import org.testng.Assert;
 
 public class MainPage extends TestPrepare {
 
-    private WebElement ProfileInfo() {
+    private WebElement profileInfo() {
         return (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector(".header2-nav__user"))));
     }
 
-    private WebElement CityInfo() {
+    private WebElement cityInfo() {
         return (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .cssSelector("[class*='line__region'] "
@@ -26,7 +26,7 @@ public class MainPage extends TestPrepare {
 
     @Step("Open Sign In Form")
     public SignInPage startSignIn() {
-        ProfileInfo().click();
+        profileInfo().click();
         return new SignInPage();
     }
 
@@ -34,7 +34,7 @@ public class MainPage extends TestPrepare {
     public ProfilePage startProfile() {
         WebElement profileAddress;
 
-        (new Actions(driver)).moveToElement(ProfileInfo()).build().perform();
+        (new Actions(driver)).moveToElement(profileInfo()).build().perform();
         profileAddress = driver.findElement(By.
                 cssSelector("[class*='type_settings']"));
         profileAddress.click();
@@ -43,13 +43,13 @@ public class MainPage extends TestPrepare {
 
     @Step("Check Profile Authorization")
     public void checkProfile() {
-        Assert.assertEquals(ProfileInfo()
+        Assert.assertEquals(profileInfo()
                 .getAttribute("textContent"), "Мой профиль");
     }
 
     @Step("Check Profile Login")
     public void checkLogin(String login) {
-        (new Actions(driver)).moveToElement(ProfileInfo()).build().perform();
+        (new Actions(driver)).moveToElement(profileInfo()).build().perform();
         Assert.assertEquals(driver.findElement(By
                 .cssSelector(".header2-user-menu__email"))
                 .getAttribute("textContent"), login);
@@ -57,7 +57,7 @@ public class MainPage extends TestPrepare {
 
     @Step("Check City on Main Page")
     public void checkCity(String nameCity) {
-        Assert.assertEquals(CityInfo()
+        Assert.assertEquals(cityInfo()
                         .getAttribute("textContent"), nameCity);
     }
 
@@ -68,7 +68,7 @@ public class MainPage extends TestPrepare {
         WebElement searchCity;
         WebElement chooseCity;
 
-        CityInfo().click();
+        cityInfo().click();
 
         formCity = (new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By
@@ -91,4 +91,29 @@ public class MainPage extends TestPrepare {
         enterCity.sendKeys(Keys.ENTER);
         driver.navigate().refresh();
     }
+
+    @Step("Log Out")
+    public void quitLogin() {
+        WebElement logOut;
+
+        (new Actions(driver)).moveToElement(profileInfo()).build().perform();
+        logOut = driver.findElement(By.cssSelector("[class*='item_type_logout']"));
+        logOut.click();
+
+        Assert.assertEquals(profileInfo()
+                .getAttribute("textContent"), "Войти в аккаунт");
+    }
+
+    @Step("Searching Toothbrushes")
+    public void searchToothbrushes() {
+        WebElement rowSearch;
+
+        rowSearch = driver.findElement(By.id("header-search"));
+        rowSearch.click();
+        rowSearch.sendKeys("Электрические зубные щетки");
+        rowSearch.sendKeys(Keys.ENTER);
+    }
+
+
+
 }

@@ -17,5 +17,6 @@ public class Test1 extends TestPrepare {
         signIn.enterPassword(password);
         mainPage.checkProfile();
         mainPage.checkLogin(login + "@yandex.ru");
+        mainPage.quitLogin();
     }
 }

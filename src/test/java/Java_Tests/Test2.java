@@ -32,5 +32,7 @@ public class Test2 extends TestPrepare {
 
         ProfilePage profile = mainPage.startProfile();
         profile.checkAddress();
+
+        mainPage.quitLogin();
     }
 }

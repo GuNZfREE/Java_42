@@ -25,7 +25,6 @@ public class TestPrepare {
 
     @AfterMethod
     public void quit() {
-        driver.get("https://beru.ru/logout?retpath=https%3A%2F%2Fberu.ru%2F");
         driver.close();
         driver.quit();
     }
