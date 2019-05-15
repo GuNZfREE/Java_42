@@ -16,7 +16,7 @@ public class SearchPage extends MainPage {
     List<WebElement> allToothbrushes;
 
     @Step("Set Min and Max Price")
-    public void addPrices(String  min, String max) {
+    public void addPricesRange(String  min, String max) {
         WebElement minPrice = driver.findElement(By.id("glpricefrom"));
         WebElement maxPrice = driver.findElement(By.id("glpriceto"));
 
@@ -51,7 +51,7 @@ public class SearchPage extends MainPage {
     }
 
     @Step("Check Toothbrushes by Prices")
-    public void checkAllToothbrushes(int min, int max) {
+    public void checkPriceAllToothbrushes(int min, int max) {
         for(WebElement element : allToothbrushes) {
             String pr = element.findElement(By.cssSelector("[data-tid = 'c3eaad93']")).getAttribute("textContent");
             int price = Integer.parseInt(pr.replace(" ", ""));
@@ -64,7 +64,7 @@ public class SearchPage extends MainPage {
     }
 
     @Step("Add to Order")
-    public void addToOrder() {
+    public void addToothbrushToOrder() {
         goToOrder();
         (new WebDriverWait(driver, 20))
                 .until(ExpectedConditions.presenceOfElementLocated(By

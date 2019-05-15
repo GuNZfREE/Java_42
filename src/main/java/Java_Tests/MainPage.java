@@ -25,13 +25,13 @@ public class MainPage extends TestPrepare {
     }
 
     @Step("Open Sign In Form")
-    public SignInPage startSignIn() {
+    public SignInPage startSignInPage() {
         profileInfo().click();
         return new SignInPage();
     }
 
     @Step("Open Profile")
-    public ProfilePage startProfile() {
+    public ProfilePage startProfilePage() {
         (new Actions(driver)).moveToElement(profileInfo()).build().perform();
         WebElement profileAddress = driver.findElement(By.
                 cssSelector("[class*='type_settings']"));
@@ -40,7 +40,7 @@ public class MainPage extends TestPrepare {
     }
 
     @Step("Check Profile Authorization")
-    public void checkProfile() {
+    public void checkProfileTitle() {
         Assert.assertEquals(profileInfo()
                 .getAttribute("textContent"), "Мой профиль");
     }
@@ -54,13 +54,13 @@ public class MainPage extends TestPrepare {
     }
 
     @Step("Check City on Main Page")
-    public void checkCity(String nameCity) {
+    public void checkCityOnPage(String nameCity) {
         Assert.assertEquals(cityInfo()
                         .getAttribute("textContent"), nameCity);
     }
 
     @Step("Change City on Main Page")
-    public void changeCity(String nameCity) {
+    public void changeCityOnPage(String nameCity) {
         cityInfo().click();
 
         WebElement formCity = (new WebDriverWait(driver, 30)
@@ -85,13 +85,10 @@ public class MainPage extends TestPrepare {
         driver.navigate().refresh();
     }
 
-    @Step("Searching Toothbrushes")
-    public void searchToothbrushes() {
+    @Step("Input Toothbrushes in Search Bar")
+    public void inputToothbrushesInSearchBar() {
         WebElement rowSearch = driver.findElement(By.id("header-search"));
         rowSearch.click();
         rowSearch.sendKeys("Электрические зубные щетки" + Keys.ENTER);
     }
-
-
-
 }

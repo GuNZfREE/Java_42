@@ -9,19 +9,19 @@ public class TestBuyToothbrush extends TestPrepare {
     @Test
     public void test3() throws InterruptedException {
         MainPage mainPage = new MainPage();
-        mainPage.searchToothbrushes();
+        mainPage.inputToothbrushesInSearchBar();
         SearchPage searchPage = new SearchPage();
-        searchPage.addPrices("999", "1999");
+        searchPage.addPricesRange("999", "1999");
         searchPage.addAllToothbrushes();
-        searchPage.checkAllToothbrushes(999, 1999);
-        searchPage.addToOrder();
+        searchPage.checkPriceAllToothbrushes(999, 1999);
+        searchPage.addToothbrushToOrder();
 
         OrderPage orderPage  = new OrderPage();
         orderPage.checkDeliveryText("бесплатной доставки осталось");
-        orderPage.checkPrice();
-        orderPage.addCountProduct(2999);
-        orderPage.checkFreeDeliveryTitle("Поздравляем!");
-        orderPage.checkFreeDelivery();
-        orderPage.checkPrice();
+        orderPage.checkOrderPrice();
+        orderPage.addProductToLimit(2999);
+        orderPage.checkFreeDeliveryAfterAddProduct("Поздравляем!");
+        orderPage.checkFreeDeliveryInOrderPrice();
+        orderPage.checkOrderPrice();
     }
 }

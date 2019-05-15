@@ -21,7 +21,7 @@ public class OrderPage extends  MainPage {
     }
 
     @Step("Check Price in Order Page")
-    public void checkPrice() {
+    public void checkOrderPrice() {
         priceList = driver.findElements(By.cssSelector("[class *= '_1Q9ASvPbPN']"));
         int regularPrice = parseInt(priceList.get(0).findElement(By.cssSelector("[data-auto*='value']"))
                                          .getAttribute("textContent"));
@@ -46,14 +46,14 @@ public class OrderPage extends  MainPage {
     }
 
     @Step("Check Free Delivery")
-    public void checkFreeDelivery() {
+    public void checkFreeDeliveryInOrderPrice() {
         String priceStr = priceList.get(1).findElement(By.cssSelector("[data-auto*='value']"))
                 .getAttribute("textContent").replace(" ", "");
         Assert.assertTrue(priceStr.contains("бесплатно"));
     }
 
     @Step("Add One More Product")
-    public void addCountProduct(int priceLimit) {
+    public void addProductToLimit(int priceLimit) {
         String priceStr = driver.findElement(By.xpath("//div[@data-auto='CartOfferPrice']/span/span/span"))
                 .getAttribute("textContent");
         int regylarPrice = parseInt(priceStr);
@@ -65,7 +65,7 @@ public class OrderPage extends  MainPage {
         }
     }
 
-    public void checkFreeDeliveryTitle(String title) {
+    public void checkFreeDeliveryAfterAddProduct(String title) {
         (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.attributeContains(
                         By.cssSelector("[class*='_3EX9adn_xp']"), "textContent", "Поздравляем!"));

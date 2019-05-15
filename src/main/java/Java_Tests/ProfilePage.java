@@ -21,7 +21,7 @@ public class ProfilePage extends MainPage {
     }
 
     @Step("Check Address in Profile and Page")
-    public void checkAddress() {
+    public void checkHeaderCityAndAddress() {
         Assert.assertEquals(PageCity().getAttribute("textContent"),
                 ProfileCity().getAttribute("textContent"));
     }

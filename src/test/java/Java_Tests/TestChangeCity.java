@@ -23,14 +23,14 @@ public class TestChangeCity extends TestPrepare {
         String password = "2178boston";
 
         MainPage mainPage = new MainPage();
-        mainPage.changeCity(nameCity);
-        mainPage.checkCity(nameCity);
+        mainPage.changeCityOnPage(nameCity);
+        mainPage.checkCityOnPage(nameCity);
 
-        SignInPage signIn = mainPage.startSignIn();
+        SignInPage signIn = mainPage.startSignInPage();
         signIn.enterLogin(login);
         signIn.enterPassword(password);
 
-        ProfilePage profile = mainPage.startProfile();
-        profile.checkAddress();
+        ProfilePage profile = mainPage.startProfilePage();
+        profile.checkHeaderCityAndAddress();
     }
 }
