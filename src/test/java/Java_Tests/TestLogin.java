@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class TestLogin extends TestPrepare {
 
     @Test
-    public void test1() {
+    public void testLogin() {
         String login = "GuNZfREE164";
         String password = "2178boston";
 

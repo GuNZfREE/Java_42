@@ -18,7 +18,7 @@ public class TestChangeCity extends TestPrepare {
     }
 
     @Test(dataProvider="ListCity")
-    public void test2(String nameCity) {
+    public void testChangeCity(String nameCity) {
         String login = "GuNZfREE164";
         String password = "2178boston";
 

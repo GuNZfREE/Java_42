@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class TestBuyToothbrush extends TestPrepare {
 
     @Test
-    public void test3() throws InterruptedException {
+    public void testBuyToothbrush() throws InterruptedException {
         MainPage mainPage = new MainPage();
         mainPage.inputToothbrushesInSearchBar();
         SearchPage searchPage = new SearchPage();
